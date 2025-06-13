@@ -1,9 +1,5 @@
-
-
-
-
 /* global __firebase_config, __initial_auth_token */
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -19,7 +15,7 @@ const orthographyContent = [
     unit: "Unidad II",
     title: "Ortografía consonántica: B y V",
     description: "Explora las reglas fundamentales para el uso correcto de las letras 'B' y 'V' en español, incluyendo excepciones y ejemplos prácticos.",
-    fixedImageUrl: 'ortografia-b-v.jpg', // Image for this unit
+    fixedImageUrl: 'la_letra_b_y_v_con_guantes.jpg', // Image for this unit
     sections: [
       {
         sectionTitle: "2.1. Reglas para el uso de la “B”",
@@ -202,7 +198,7 @@ const orthographyContent = [
     unit: "Unidad III",
     title: "Ortografía consonántica (S, C, X, Z, G y J)",
     description: "Domina las complejas reglas de las letras 'S', 'C', 'X', 'Z', 'G' y 'J', con énfasis en sus diferentes sonidos y aplicaciones.",
-    fixedImageUrl: 'ortografia-s-c-x-z-g-j.jpg', // Image for this unit
+    fixedImageUrl: 'la_letra_s_c_x_en_una.jpg', // Image for this unit
     sections: [
       {
         sectionTitle: "3.1.1. Reglas para el uso de la “C”",
@@ -647,7 +643,7 @@ const orthographyContent = [
     unit: "Unidad IV",
     title: "Homófonos y parónimos",
     description: "Aprende a diferenciar palabras que suenan igual o parecido, pero tienen significados y escrituras distintas, evitando errores comunes.",
-    fixedImageUrl: 'homofonos-paronimos.jpg', // Image for this unit
+    fixedImageUrl: 'homofonos paronimos.jpg', // Image for this unit
     sections: [
       {
         sectionTitle: "4.1. Homófonos",
@@ -692,7 +688,7 @@ const orthographyContent = [
     unit: "Unidad V",
     title: "Acentuación",
     description: "Comprende las reglas de acentuación de palabras agudas, graves, esdrújulas y sobreesdrújulas, así como el uso del acento diacrítico y enfático.",
-    fixedImageUrl: 'acentuacion.jpg', // Image for this unit
+    fixedImageUrl: 'tilde.png', // Image for this unit
     sections: [
       {
         sectionTitle: "5.1. Reglas de acentuación",
@@ -727,12 +723,7 @@ const orthographyContent = [
             exercise: "Acentúa si es necesario: 'cancion'.",
             solution: "canción",
             explanation: "Las *palabras agudas* son aquellas cuya *sílaba tónica* es la *última*. Llevan tilde solo si terminan en *N*, *S* o en cualquier *vocal* (a, e, i, o, u). Ejemplos: *sofá*, *corazón*, *compás*. Si terminan en otra consonante, no llevan tilde (ej. *pared*, *reloj*)."
-          }
-        ]
-      },
-      {
-        sectionTitle: "5.1.3. Palabras graves:",
-        rules: [
+          },
           {
             rule: "Se acentúan si terminan en consonantes que NO sean N, S, o Vocal.",
             examples: ["Huésped", "estiércol", "Túy", "fórceps", "bíceps", "trémens", "fénix", "árbol", "fácil"],
@@ -799,7 +790,7 @@ const orthographyContent = [
     unit: "Unidad VI",
     title: "Signos de puntuación",
     description: "Domina el uso de la coma, el punto, punto y coma, dos puntos, puntos suspensivos, signos dobles, diéresis, barra y asterisco para una escritura clara.",
-    fixedImageUrl: 'signos-puntuacion.jpg', // Image for this unit
+    fixedImageUrl: 'signos putuacion.jpg', // Image for this unit
     sections: [
       {
         sectionTitle: "6.1. Signos simples",
@@ -1306,7 +1297,6 @@ const ApaReferences = () => {
 // Main App Component
 const App = () => {
   const [activeUnit, setActiveUnit] = useState("cover"); // Start with 'cover' as the active section
-  const [isAuthReady, setIsAuthReady] = useState(false);
   const authRef = useRef(null);
   const dbRef = useRef(null);
 
@@ -1332,12 +1322,12 @@ const App = () => {
             console.error("Firebase Auth Error:", error);
           }
         }
-        setIsAuthReady(true);
+        // Removed setIsAuthReady(true) as it's no longer used
       });
       return () => unsubscribe();
     } catch (error) {
       console.error("Failed to initialize Firebase:", error);
-      setIsAuthReady(true); // Proceed without Firebase if init fails
+      // Removed setIsAuthReady(true) as it's no longer used
     }
   }, []);
 
